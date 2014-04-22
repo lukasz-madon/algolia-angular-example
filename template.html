@@ -1,0 +1,33 @@
+<div class="container">
+  <div class="row">
+    <div class="col-sm-12">
+      <h1>Algolia example with Angular.js</h1>
+      <div class="form">
+        <input autocomplete="off" autocorrect="off" class="form-control" ng-keyup="search()" ng-model="query" placeholder="Search people by name, company, location or keywords" spellcheck="false" type="text">
+      </div>
+    </div>
+  </div>
+  <br>
+  <div class="hit" ng-repeat="hit in hits">
+    <div class="row">
+      <div class="col-lg-1 col-sm-2">
+        <img ng-src="{{ hit.picture_url || 'https://static.licdn.com/scds/common/u/images/themes/katy/ghosts/person/ghost_person_80x80_v1.png' }}" />
+      </div>
+      <div class="col-sm-4">
+        <div class="full-name">{{ hit.name }}</div>
+        <div class="email">{{ hit.email }}</div>
+        <div class="position">{{ hit.web }}</div>
+        <div class="organisation">{{ hit.organisation }}</div>
+      </div>
+      <div class="col-sm-4">
+         <address>
+          <strong>{{ hit.company }}</strong><br>
+          {{ hit.address }}<br>
+          {{ hit.city }}, {{ hit.state }} {{ hit.zip }}<br>
+          <abbr title="Phone">P:</abbr> {{ hit.phone }}
+        </address>
+      </div>
+    </div>
+  </div>
+  <p ng-show="!hits.length" class="text-center">No results are matching your query.</p>
+</div>
