@@ -12,13 +12,17 @@ angular.module('myApp', [
 .controller('HomeCtrl', function ($scope, Contacts) {
     $scope.hits = [];
     $scope.query = '';
+    $scope.initRun = true;
     $scope.search = function() {
       Contacts.search($scope.query, function(success, content) {
         if (!success || $scope.query != content.query) {
           return;
         }
         $scope.hits = content.hits;
-        $scope.$apply();
+        if ($scope.initRun){
+          $scope.$apply();
+          $scope.initRun = false;
+        }
       });
     };
     $scope.search();
