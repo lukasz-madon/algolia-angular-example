@@ -1,8 +1,8 @@
-### mine
 node_modules
+dist
 .tmp
 .sass-cache
-client/app/bower_components
+app/bower_components
 
 # Compiled source #
 ###################
