@@ -1,7 +1,8 @@
 'use strict';
 
 angular.module('myApp', [
-  'ngRoute'
+  'ngRoute',
+  'ngSanitize'
 ])
 .config(['$routeProvider', function($routeProvider) {
   $routeProvider.when('/', { templateUrl: 'ex/template.html', controller: 'HomeCtrl' });

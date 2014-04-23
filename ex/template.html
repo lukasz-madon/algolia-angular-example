@@ -1,4 +1,3 @@
-
 <div class="row">
   <div class="col-sm-12">
     <h1>Algolia example with Angular.js</h1>
@@ -13,18 +12,20 @@
     <div class="col-lg-2 col-sm-2">
       <img ng-src="{{ hit.picture_url || 'https://static.licdn.com/scds/common/u/images/themes/katy/ghosts/person/ghost_person_80x80_v1.png' }}" />
     </div>
-    <div class="col-sm-4">
-      <div class="full-name">{{ hit.name }}</div>
-      <div class="email">{{ hit.email }}</div>
-      <div class="position">{{ hit.web }}</div>
-      <div class="organisation">{{ hit.organisation }}</div>
+    <div class="col-sm-5">
+      <div ng-bind-html="hit._highlightResult.name.value"></div>
+      <div ng-bind-html="hit._highlightResult.email.value"></div>
+      <div ng-bind-html="hit._highlightResult.web.value"></div>
+      <div ng-bind-html="hit._highlightResult.organisation.value"></div>
     </div>
-    <div class="col-sm-4">
+    <div class="col-sm-5">
        <address>
-        <strong>{{ hit.company }}</strong><br>
-        {{ hit.address }}<br>
-        {{ hit.city }}, {{ hit.state }} {{ hit.zip }}<br>
-        <abbr title="Phone">P:</abbr> {{ hit.phone }}
+        <span ng-bind-html="hit._highlightResult.company.value"></span><br>
+        <span ng-bind-html="hit._highlightResult.address.value"></span><br>
+        <span 
+        ng-bind-html="hit._highlightResult.city.value + ' ' + hit._highlightResult.state.value + ' ' + hit._highlightResult.zip.value">
+      </span><br>
+        <abbr title="Phone">P:</abbr><span ng-bind-html="hit._highlightResult.phone.value"></span>
       </address>
     </div>
   </div>
